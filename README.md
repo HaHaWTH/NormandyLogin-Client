@@ -14,7 +14,7 @@ Normandy Login is a client-server mod designed to enhance traditional password-b
 
 ## Mod Dependencies
 
-- Fabric: Fabric API
+- Fabric: Fabric API, [ForgeConfigAPIPort](https://github.com/Fuzss/forgeconfigapiport)
 - NeoForge: None
 
 ## FAQ

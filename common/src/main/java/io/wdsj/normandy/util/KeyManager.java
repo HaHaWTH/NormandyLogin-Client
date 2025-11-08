@@ -3,6 +3,7 @@ package io.wdsj.normandy.util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.wdsj.normandy.Constants;
+import io.wdsj.normandy.config.NormandyCommonConfig;
 import io.wdsj.normandy.core.KeyData;
 
 import java.io.File;
@@ -18,10 +19,16 @@ import java.util.UUID;
 public final class KeyManager {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private static final boolean STORE_TOKEN_IN_USER_HOME = Boolean.getBoolean("normandy.storeTokenInUserHome");
 
     private static Path getPlayerKeyFile(File gameDir, String serverAddress, UUID playerUuid) {
         String safeServerName = serverAddress.replace(":", "_").replace("/", "_");
-        return gameDir.toPath()
+        return NormandyCommonConfig.common().storeTokenInUserHome.get() || STORE_TOKEN_IN_USER_HOME ? Path.of(System.getProperty("user.home"))
+                .resolve(".normandy-login")
+                .resolve("servers")
+                .resolve(safeServerName)
+                .resolve(playerUuid.toString() + ".json") :
+        gameDir.toPath()
                 .resolve(".auth-token")
                 .resolve("servers")
                 .resolve(safeServerName)

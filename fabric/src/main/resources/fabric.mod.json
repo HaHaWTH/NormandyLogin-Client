@@ -27,10 +27,10 @@
         "fabricloader": ">=0.17.2",
         "fabric-api": "*",
         "minecraft": ">=1.21.1",
-        "java": ">=${java_version}"
+        "java": ">=${java_version}",
+        "forgeconfigapiport": "*"
     },
     "suggests": {
         "another-mod": "*"
     }
 }
-  
