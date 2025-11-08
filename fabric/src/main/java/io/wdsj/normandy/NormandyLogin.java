@@ -15,8 +15,10 @@ public class NormandyLogin implements ModInitializer {
 
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
             if (client.isLocalServer()) return;
-            ModPackets.sendToServer(new C2STokenHandshakePacket(Constants.PROTOCOL_VERSION));
-            Constants.LOGGER.info("Sent token handshake packet");
+            Constants.runTaskLaterSync(() -> {
+                ModPackets.sendToServer(new C2STokenHandshakePacket(Constants.PROTOCOL_VERSION));
+                Constants.LOGGER.info("Sent token handshake packet");
+            }, 1000L);
         });
     }
 }
