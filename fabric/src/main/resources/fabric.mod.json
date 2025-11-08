@@ -8,15 +8,15 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "homepage": "https://github.com/HaHaWTH/NormandyLogin-Client",
+        "sources": "https://github.com/HaHaWTH/NormandyLogin-Client"
     },
     "license": "${license}",
     "icon": "${mod_id}.png",
-    "environment": "*",
+    "environment": "client",
     "entrypoints": {
         "main": [
-            "com.example.examplemod.ExampleMod"
+          "io.wdsj.normandy.NormandyLogin"
         ]
     },
     "mixins": [
@@ -24,9 +24,9 @@
         "${mod_id}.fabric.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=${fabric_loader_version}",
+        "fabricloader": ">=0.17.2",
         "fabric-api": "*",
-        "minecraft": "~${minecraft_version}",
+        "minecraft": ">=1.21.1",
         "java": ">=${java_version}"
     },
     "suggests": {
