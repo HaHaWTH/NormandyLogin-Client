@@ -14,10 +14,12 @@ public class JoinHandler {
     public static void onJoin(ClientPlayerNetworkEvent.LoggingIn event) {
         var client = Minecraft.getInstance();
         if (client.isLocalServer()) return;
-        ClientPacketListener connection = client.getConnection();
-        if (connection != null) {
-            connection.send(new C2STokenHandshakePacket(Constants.PROTOCOL_VERSION));
-            Constants.LOGGER.info("Sent token handshake packet");
-        }
+        client.execute(() -> {
+            ClientPacketListener connection = client.getConnection();
+            if (connection != null) {
+                connection.send(new C2STokenHandshakePacket(Constants.PROTOCOL_VERSION));
+                Constants.LOGGER.info("Sent token handshake packet");
+            }
+        });
     }
 }
